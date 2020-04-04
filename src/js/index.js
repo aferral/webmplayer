@@ -1,6 +1,8 @@
 require('./components/dropdown.js');
 
 var Player = require('./components/player.js');
+var env_vars = require('./env.js');
+
 
 (function () {
     
@@ -53,7 +55,7 @@ var Player = require('./components/player.js');
         
 	Player.clearPlayList();
 
-	var request2 = new Request('http://localhost:8000/list');fetch(request2)
+	var request2 = new Request(env_vars.API_URL+'/list');fetch(request2)
 	  .then(response => {
 	    if (response.status === 200) {
 	      return response.json();

@@ -1,4 +1,6 @@
 var timeHelper = require('../helpers/time');
+var env_vars = require('../env.js');
+
 
 var audio           = document.querySelector("#player"),
     btnPlay         = document.querySelector("#btn-play"),
@@ -55,7 +57,7 @@ var playMusic = function (track) {
     
 	var temp_obj = Player.playList[track]
 	var name = temp_obj.Band+" "+temp_obj.Album+" "+temp_obj.Song;
-	var url_full = 'http://localhost:8000/download/'+temp_obj.id_drive
+	var url_full = env_vars.API_URL+'/download/'+temp_obj.id_drive
 
     audio.onloadeddata = function() {
         

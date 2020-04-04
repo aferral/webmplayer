@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "browserify src/js/main.js --debug | exorcist dist/js/bundle.map.js > dist/js/bundle.js",
+    "dist": "browserify src/js/main.js --debug | exorcist dist/js/bundle.map.js > dist/js/bundle.js",
     "dev:watch": "watchify -vd src/js/main.js -o 'exorcist dist/js/bundle.js.map > dist/js/bundle.js'"
   },
   "repository": {

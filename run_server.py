@@ -50,7 +50,8 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             with open(calc_path,'rb') as f:
                 self.wfile.write(f.read())
 
-
-
-httpd = HTTPServer(('localhost', 8000), SimpleHTTPRequestHandler)
+import sys
+host,port = sys.argv[1],int(sys.argv[2])
+print('Starting host: {0} port: {1}'.format(host,port))
+httpd = HTTPServer((host, port), SimpleHTTPRequestHandler)
 httpd.serve_forever()
