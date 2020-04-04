@@ -25,8 +25,8 @@ var Player = {
     playList     : []
 };
 
-var setPlayList = function (music) {
-    Player.playList.push(music);
+var setPlayList = function (x) {
+    Player.playList.push(x);
 }
 
 var activateListItem = function (id) {
@@ -53,15 +53,9 @@ var hideLoading = function () {
 
 var playMusic = function (track) {
     
-    rd.onloadstart = function () {
-        showLoading();
-    };
-
-    rd.onload = function () {
-        audio.src = this.result;
-    };
-
-    rd.readAsDataURL(Player.playList[track]);
+	var temp_obj = Player.playList[track]
+	var name = temp_obj.Band+" "+temp_obj.Album+" "+temp_obj.Song;
+	var url_full = 'http://localhost:8000/download/'+temp_obj.id_drive
 
     audio.onloadeddata = function() {
         
@@ -78,10 +72,13 @@ var playMusic = function (track) {
         Player.currentTrack = track;
         
         hideLoading();
-        setMusicName(Player.playList[track].name);
+
+
+        setMusicName(name);
         setTimeLineMax(this.duration);
         setMusicTime(this.duration);
     };
+	audio.src = url_full;
     
 };
 
@@ -192,8 +189,11 @@ var createPlayList = function () {
     playListElement.innerHTML = "";
 
     for (i = 0; i < len; i += 1) {
+	
+	var temp_obj = Player.playList[i]
+	var name = temp_obj.Band+"--"+temp_obj.Album+"--"+temp_obj.Song;
         
-        musicName = document.createTextNode(Player.playList[i].name.replace(".mp3", ""));
+        musicName = document.createTextNode(name);
 
         li     = document.createElement("li");
         button = document.createElement("button");

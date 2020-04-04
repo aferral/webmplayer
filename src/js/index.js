@@ -5,7 +5,6 @@ var Player = require('./components/player.js');
 (function () {
     
     var btnUpload   = document.querySelector("#btn-upload"),
-        fileElement = document.querySelector("#file-element"),
         themeLight  = document.querySelector("#theme-light"),
         themeDark   = document.querySelector("#theme-dark"),
         btnsTheme   = document.querySelectorAll('.theme-item-btn'),
@@ -51,24 +50,31 @@ var Player = require('./components/player.js');
         e.stopPropagation();
         e.preventDefault();
         
-        if (fileElement) {
-            fileElement.click();
-        }
+        
+	Player.clearPlayList();
+
+	var request2 = new Request('http://localhost:8000/list');fetch(request2)
+	  .then(response => {
+	    if (response.status === 200) {
+	      return response.json();
+	    } else {
+	      throw new Error('Something went wrong on api server!');
+	    }
+	  })
+	  .then(response => {
+	    console.debug(response);
+		  for (var elem of response){
+			Player.setPlayList(elem)
+		  }
+        	Player.createPlayList();
+        	Player.playMusic(0);
+	  }).catch(error => {
+	    console.error(error);
+	  });
+
         
     }, false);
 
-    fileElement.addEventListener("change", function () {
-
-        Player.clearPlayList();
-
-        for (var i = 0, len = this.files.length; i < len; i += 1) {
-            Player.setPlayList(this.files[i]);
-        }
-
-        Player.createPlayList();
-        Player.playMusic(0);
-
-    }, false);
 
     btnsTheme.forEach(function (btnTheme) {
         btnTheme.addEventListener('click', function () {
