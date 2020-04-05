@@ -2,8 +2,8 @@ import sys
 import os
 
 # import music app
-path_downloader = os.environ['MUSIC_LIBRARY_PATH']
-sys.path.append(path_downloader)
+path_downloader = 'fuse_music'
+sys.path.append(os.path.abspath(path_downloader))
 base_abs_path = os.path.abspath('./')
 print(base_abs_path)
 os.chdir(path_downloader)
