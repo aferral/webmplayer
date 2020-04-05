@@ -18,10 +18,6 @@ import json
 from data_manager import get_or_create_metadata_database
 from drive_utils import download_and_decript
 
-# check config
-from test.test_service_conn import test_service_get
-
-test_service_get()
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
