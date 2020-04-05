@@ -1,6 +1,8 @@
 import sys
 import os
-path_downloader = '/home/aferral/Escritorio/p_m'
+
+# import music app
+path_downloader = os.environ['MUSIC_LIBRARY_PATH']
 sys.path.append(path_downloader)
 base_abs_path = os.path.abspath('./')
 print(base_abs_path)
@@ -16,6 +18,10 @@ import json
 from data_manager import get_or_create_metadata_database
 from drive_utils import download_and_decript
 
+# check config
+from test.test_service_conn import test_service_get
+
+test_service_get()
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -25,7 +31,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'application/json')
             self.end_headers()
 
-            # pide lista
+            # list music from drive 
             x=get_or_create_metadata_database(verbose=False)
             vals=x.list(as_dict=True)
             self.wfile.write(json.dumps(vals).encode())

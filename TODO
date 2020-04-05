@@ -1,8 +1,28 @@
-# colocar en modulo el otro repo (pip install ojala)
+# se asume 
+
+
+Apuradito
+
+# build script
+
+# agregar a deploy test_config antes de partir
+
+# como primera funcion colocar test_config. (colocar mensaje con donde editar config)
+# quitar el path de llamada libreria, solo ejecutar
+# llamar libreria desde programa web
+
+
+
+
+# leer sobre CORS
+
+
+# minimizar dependencias javascript
+# vver si puedo quitar el dist
+
+# editar readme
+
+# Rutas de aws 1y como hacer deploy
 # ver seguridad de dejar abierto el path
 # flask ??
-# crear un config ??
-# arreglar CORS
-# Select album, artista ??
-# RUTAS EN PRODUCCCION
-# Preparra git en el otro repo
+
