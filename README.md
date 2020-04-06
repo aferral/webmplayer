@@ -9,3 +9,10 @@ The player also uses localStorage API to storage your last theme personalization
 And finally it also use's [Unsplash's API](https://source.unsplash.com/) to set the player background image.\
 
 [See it working](http://csilva2810.github.io/webmplayer/index.html)
+
+# install and deploy
+1. Crear config.ini according to () # TODO add docs
+git clone https://github.com/aferral/webmplayer && cd webmplayer && bash install.sh & bash deploy.sh
+
+go to localhost:8000
+
