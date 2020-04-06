@@ -1,8 +1,8 @@
 source venv/bin/activate 
-source env/dev_env.sh 
+source env/default_env.sh 
 
 
-dist_url=http://$host:$port
+
 cd src/js
 
 > env.js

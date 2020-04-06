@@ -18,13 +18,15 @@ import json
 from data_manager import get_or_create_metadata_database
 from drive_utils import download_and_decript
 
-
+backend_url = os.environ['dist_url']
+allowed_paths = ['dist','img','fonts']
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed_path = self.path.split('/')
         if parsed_path[1] == 'list':
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin',backend_url)
             self.end_headers()
 
             # list music from drive 
@@ -34,6 +36,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
         elif parsed_path[1] == 'download':
             self.send_response(200)
+            self.send_header('Access-Control-Allow-Origin',backend_url)
             self.end_headers()
 
             id_to_play = parsed_path[2]
@@ -43,7 +46,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             with open(os.path.join(base_abs_path,'index.html'),'rb') as f:
                 self.wfile.write(f.read())
-        else:
+        elif parsed_path[1] in allowed_paths: # only enable access to dist files
             self.send_response(200)
             self.end_headers()
 
@@ -51,6 +54,11 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             print(calc_path)
             with open(calc_path,'rb') as f:
                 self.wfile.write(f.read())
+        else:
+            self.send_response(200)
+            self.end_headers()
+
+            self.wfile.write('not ok'.encode('utf8'))
 
 import sys
 host,port = sys.argv[1],int(sys.argv[2])
