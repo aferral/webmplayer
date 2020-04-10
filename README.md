@@ -12,7 +12,7 @@ Front end for my virtual music library [project](https://github.com/aferral/FUSE
 
 2. In the same folder run
 ```
-git clone https://github.com/aferral/webmplayer && cd webmplayer && bash install.sh & bash deploy.sh
+git clone https://github.com/aferral/webmplayer && cd webmplayer && bash install.sh && bash deploy.sh
 ```
 
 3. Use
