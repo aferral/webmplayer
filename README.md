@@ -6,9 +6,11 @@ Front end for my virtual music library [project](https://github.com/aferral/FUSE
 
 
 # install and deploy
-1. Crear config.ini according to [project](https://github.com/aferral/FUSE-virtual-music-library#configuration)
+1. Crear config.ini according to [project](https://github.com/aferral/FUSE-virtual-music-library#easy-config)
 
-2. Run
+2. Place the config.ini in a folder
+
+2. In the same folder run
 ```
 git clone https://github.com/aferral/webmplayer && cd webmplayer && bash install.sh & bash deploy.sh
 ```
