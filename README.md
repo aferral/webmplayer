@@ -10,11 +10,13 @@ Front end for my virtual music library [project](https://github.com/aferral/FUSE
 
 2. Place the config.ini in a folder
 
-2. In the same folder run
+3. In the same folder run
 ```
 git clone https://github.com/aferral/webmplayer && cd webmplayer && bash install.sh && bash deploy.sh
 ```
 
-3. Use
+4. It will ask for google drive permissions.
+
+5. Use
 go to localhost:8000
 
